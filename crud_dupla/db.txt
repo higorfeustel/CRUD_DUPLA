@@ -1,0 +1,26 @@
+create database aulas_duplas;
+use aulas_duplas;
+
+create table professores (
+    id int auto_increment primary key,
+    nome_professor varchar(50) not null,
+    data_nascimento date not null,
+    cpf_professor varchar(11) not null,
+    materia varchar(30) not null
+
+);
+
+create table aulas (
+    id int auto_increment primary key,
+    sala int not null,
+    hora decimal not null,
+    data_aula date not null
+);
+
+create table diaria (
+    fk_professores int not null,
+    fk_aulas int not null,
+    foreign key (fk_professores) references professores(id),
+    foreign key (fk_aulas) references aulas(id),
+    hora_aula decimal not null
+);
